@@ -55,10 +55,13 @@ public:
   /// add arbitrary number of bytes
   void add(const void* data, size_t numBytes);
 
+  /// return latest hash as intiger value
+  uint32_t    getHashValue() const;
+
   /// return latest hash as 8 hex characters
-  std::string getHash();
+  std::string getHash() const;
   /// return latest hash as bytes
-  void        getHash(unsigned char buffer[HashBytes]);
+  void        getHash(unsigned char buffer[HashBytes]) const;
 
   /// restart
   void reset();

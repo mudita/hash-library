@@ -7,9 +7,9 @@
 #include "sha3.h"
 
 // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
-#ifndef _MSC_VER
-#include <endian.h>
-#endif
+// #ifndef _MSC_VER
+// #include <endian.h>
+// #endif
 
 #include <iostream>
 

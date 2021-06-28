@@ -7,9 +7,9 @@
 #include "crc32.h"
 
 // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
-#ifndef _MSC_VER
-#include <endian.h>
-#endif
+// #ifndef _MSC_VER
+// #include <endian.h>
+// #endif
 
 
 /// same as reset()
@@ -379,8 +379,15 @@ void CRC32::add(const void* data, size_t numBytes)
 }
 
 
+/// return latest hash as intiger value
+uint32_t CRC32::getHashValue() const
+{
+    return m_hash;
+}
+
+
 /// return latest hash as 8 hex characters
-std::string CRC32::getHash()
+std::string CRC32::getHash() const
 {
   // convert hash to string
   static const char dec2hex[16+1] = "0123456789abcdef";
@@ -404,7 +411,7 @@ std::string CRC32::getHash()
 
 
 /// return latest hash as bytes
-void CRC32::getHash(unsigned char buffer[CRC32::HashBytes])
+void CRC32::getHash(unsigned char buffer[CRC32::HashBytes]) const
 {
   buffer[0] = (m_hash >> 24) & 0xFF;
   buffer[1] = (m_hash >> 16) & 0xFF;
